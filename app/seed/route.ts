@@ -102,7 +102,12 @@ async function seedRevenue() {
 }
 
 export async function GET() {
-  try {
+    try {
+      const bcrypt = (await import('bcrypt')).default;
+      const postgres = (await import('postgres')).default;
+      const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+  
+      // the rest stays the same...
     const result = await sql.begin((sql) => [
       seedUsers(),
       seedCustomers(),
