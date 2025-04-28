@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+const bcrypt = (await import('bcrypt')).default;
 import postgres from 'postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
